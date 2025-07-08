@@ -1,0 +1,21 @@
+{
+  "name": "@gtech/nestjs-mtls-loader",
+  "version": "1.0.0",
+  "description": "Reusable mTLS certificate loader for NestJS using AWS Secrets Manager",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.547.0",
+    "@nestjs/common": "^11.1.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "typescript": "^5.4.5"
+  },
+  "author": "Geovanny Ribeiro",
+  "license": "MIT"
+}

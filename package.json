@@ -1,6 +1,6 @@
 {
   "name": "nestjs-mtls-loader",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Reusable mTLS certificate loader for NestJS using AWS Secrets Manager",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

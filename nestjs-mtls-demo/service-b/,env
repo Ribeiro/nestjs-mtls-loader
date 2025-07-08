@@ -1,0 +1,4 @@
+CERT_ROLE=server
+CERT_CA_SECRET=ca-cert
+CERT_SERVER_CERT_SECRET=service-b-server-cert
+CERT_SERVER_KEY_SECRET=service-b-server-key

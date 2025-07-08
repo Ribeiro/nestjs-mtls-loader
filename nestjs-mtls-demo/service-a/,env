@@ -1,0 +1,4 @@
+CERT_ROLE=client
+CERT_CA_SECRET=ca-cert
+CERT_CLIENT_CERT_SECRET=service-a-client-cert
+CERT_CLIENT_KEY_SECRET=service-a-client-key

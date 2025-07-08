@@ -1,0 +1,55 @@
+{
+  "family": "nestjs-mtls-service-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "arn:aws:iam::123456789012:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::123456789012:role/nestjsServiceTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "nestjs-mtls-container",
+      "image": "123456789012.dkr.ecr.us-east-1.amazonaws.com/nestjs-mtls-service:latest",
+      "portMappings": [
+        {
+          "containerPort": 443,
+          "protocol": "tcp"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "CA_CERT_SECRET_NAME",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:123456789012:secret:ca-cert-abcdEf"
+        },
+        {
+          "name": "SERVER_CERT_SECRET_NAME",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:123456789012:secret:server-cert-wxyz123"
+        },
+        {
+          "name": "SERVER_KEY_SECRET_NAME",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:123456789012:secret:server-key-qwer456"
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "tmp-cert-storage",
+          "containerPath": "/tmp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/nestjs-mtls-service",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ],
+  "volumes": [
+    {
+      "name": "tmp-cert-storage",
+      "host": null
+    }
+  ]
+}
